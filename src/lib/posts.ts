@@ -11,3 +11,14 @@ export async function getPostById(id: string) {
 
   return post;
 }
+
+export async function getAllPosts() {
+  const posts = await prisma.post.findMany({
+    select: {
+      id: true,
+      title: true,
+    },
+  });
+
+  return posts;
+}
